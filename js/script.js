@@ -3,8 +3,13 @@ var questionContainer = document.querySelector(".questionContainer");
 var questionTitle = document.querySelector(".questionTitle");
 var optionContainer = document.querySelector(".optionContainer");
 var container = document.querySelector(".container");
+var displayTimer = document.querySelector(".displayTimer");
 
-var timer;
+
+var secondsLeft = 120;
+
+
+
 var score = 0;
 var questionIndex = 0;
 
@@ -38,26 +43,32 @@ var questions = [
 button.addEventListener("click", function(event) {
     event.stopPropagation();
     startQuiz();
+    
+   
   });
 
 
 function startQuiz() {
-        console.log("startQuiz");
+        startTimer();
         displayNextQuestion();
         container.classList.add("hide");
         questionContainer.classList.remove("hide");
-        //startTimer(120);
+       
 }
 
 
 function checkAnswer() {
-    console.log(this.dataset.value)
+    //console.log(this.dataset.value)
     if (questions[questionIndex].correctAnswer === this.dataset.value) {
         questionIndex++;
-        displayNextQuestion();
+        displayNextQuestion();}
+        else {
+            reduceTime();
+        }
+       
         
     }
-}
+
 
 function displayNextQuestion() {
     questionTitle.textContent = questions[questionIndex].question;
@@ -73,3 +84,24 @@ function displayNextQuestion() {
 
 }
 
+
+function startTimer() {
+    
+    var timerInterval = setInterval(function() {
+      secondsLeft--;
+      displayTimer.textContent = secondsLeft + " seconds left.";
+  
+      if(secondsLeft === 0) {
+        displayTimer.textContent = "Out of Time!"
+        clearInterval(timerInterval);
+       
+      } 
+    }, 1000);
+  }
+
+function reduceTime() {
+    secondsLeft -= 10;
+    if (secondsLeft < 0) {
+        secondsLeft = 0;
+    }
+}

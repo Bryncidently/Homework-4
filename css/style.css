@@ -24,9 +24,10 @@ body {
 button {
     text-align: center;
     width: 100px;
-    height: 30px;
+    height: 50px;
     background-color: lightgray;
     color: hotpink;
+    
   }
 
   .question {
@@ -43,4 +44,8 @@ button {
 
 }
 
+.timer {
+    color: lightgreen;
+    text-align: right;
+    }
 
