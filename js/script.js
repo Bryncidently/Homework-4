@@ -5,11 +5,8 @@ var optionContainer = document.querySelector(".optionContainer");
 var container = document.querySelector(".container");
 var displayTimer = document.querySelector(".displayTimer");
 
-
+//120 seconds because not everyone reads and comprehends fast
 var secondsLeft = 120;
-
-
-
 var score = 0;
 var questionIndex = 0;
 
@@ -47,7 +44,7 @@ button.addEventListener("click", function(event) {
    
   });
 
-
+//What starts it all
 function startQuiz() {
         startTimer();
         displayNextQuestion();
@@ -57,19 +54,22 @@ function startQuiz() {
 }
 
 
+//checks the answer
 function checkAnswer() {
-    //console.log(this.dataset.value)
     if (questions[questionIndex].correctAnswer === this.dataset.value) {
+        score += 5; 
         questionIndex++;
-        displayNextQuestion();}
-        else {
-            reduceTime();
-        }
-       
-        
+        alert("Correct! Your current score is: " + score);
+        displayNextQuestion();
+    } else {
+        score -= 5; 
+        alert("Wrong! You lose 10 seconds and 5 points!");
+        reduceTime();
+        alert("Your current score is: " + score);
     }
+}
 
-
+//when the correct answer is selected you move to the next question
 function displayNextQuestion() {
     questionTitle.textContent = questions[questionIndex].question;
     optionContainer.textContent = "";
@@ -85,23 +85,24 @@ function displayNextQuestion() {
 }
 
 
-function startTimer() {
-    
-    var timerInterval = setInterval(function() {
-      secondsLeft--;
-      displayTimer.textContent = secondsLeft + " seconds left.";
-  
-      if(secondsLeft === 0) {
-        displayTimer.textContent = "Out of Time!"
-        clearInterval(timerInterval);
-       
-      } 
-    }, 1000);
-  }
 
+function startTimer() {
+    var timerInterval = setInterval(function () {
+        secondsLeft--;
+        displayTimer.textContent = secondsLeft + " seconds left.";
+
+        if (secondsLeft <= 0) {
+            displayTimer.textContent = "Out of Time! Your final score is: " + score;
+            clearInterval(timerInterval);
+        }
+    }, 1000);
+}
+
+  //Reduces time if the wrong answer is selected
 function reduceTime() {
     secondsLeft -= 10;
     if (secondsLeft < 0) {
         secondsLeft = 0;
     }
 }
+
