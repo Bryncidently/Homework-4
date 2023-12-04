@@ -1,20 +1,15 @@
 
-body {
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    text-align: center;
-    margin: 20px;
-}
-
 .container {
     display: block;
     margin: 80px auto;
-    text-align: center;
+    text-align: left;
     font-size: 20px;
     width: 50%;
-    background-color: #051456;
-    color: gray;
-    padding: 90px;
-    border: solid;
+    color: purple;
+    padding: 80px;
+    border: solid purple;
+    border-radius: 10%;
+    font-family: 'Courier New', Courier, monospace;
     
 }
 .hide {
@@ -25,27 +20,26 @@ button {
     text-align: center;
     width: 100px;
     height: 50px;
-    background-color: lightgray;
-    color: hotpink;
-    
+    border: solid purple;
+    color: purple;
+    display: block;
+    margin: 0 auto;
+    border-radius: 10%;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bolder;
+    }
+
+  button:hover {
+    opacity: 0.5;
   }
 
-  .question {
-    font-size: 20px;
-    margin-bottom: 10px; 
-}
-
-.questionButton {
-    text-align: center;
-    width: 100px;
-    height: 30px;
-    background-color: lightgray;
-    color: blue;
-
-}
 
 .timer {
-    color: lightgreen;
+    color: purple;
     text-align: right;
     }
 
+.submit {
+    color: purple;
+    float: right; 
+}
