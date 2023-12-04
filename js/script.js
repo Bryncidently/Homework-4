@@ -47,8 +47,6 @@ var questions = [
 button.addEventListener("click", function(event) {
     event.stopPropagation();
     startQuiz();
-    
-   
   });
 
 //What starts it all
